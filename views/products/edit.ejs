@@ -1,0 +1,22 @@
+<% layout('layouts/boilerplate')%>
+<div class="d-flex justify-content-md-center">
+    <h1>Edit Product </h1>
+</div>
+    <form action="/products/<%=product._id%>?_method=PUT" method="POST"> 
+        <label for="name">Product Name</label>
+        <input  class="form-control" type ="text" name ="name" placeholder="product name" value="<%=product.name%>">
+        <label for="price">Price {unit}</label>
+        <input  class="form-control"  type ="number" name ="price" placeholder="product price" value="<%=product.price%>">
+        <label for="category">Category</label>
+        <p>
+        <select name="category" id="categories"  class="btn btn-outline-secondary">
+            <% for (let category of categories) { %>
+            <option value="<%=category%>"<%=product.category === category ? 'selected': '' %>><%=category%></option>
+        <% } %>
+        </select>
+    </p>
+        <div class="d-flex justify-content-md-center">
+        <button class="btn btn-outline-success">Submit</button>
+    </form>
+    <a href="/products/<%=product._id%>" class="btn btn-outline-warning">CANCEL</a>
+</div>
